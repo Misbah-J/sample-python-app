@@ -18,19 +18,12 @@ jobs:
             virtualenv helloworld
             . helloworld/bin/activate
             pip install --no-cache-dir -r requirements.txt
-      - run:
-          name: Run Tests
-          command: |
-            . helloworld/bin/activate
-            flask run
-            python app.py
-      - setup_remote_docker:
-          docker_layer_caching: true
+      
       - run:
           name: Build and push Docker image
           command: |
-            . helloworld/bin/activate
-            pyinstaller -F hello_world.py
+            #. helloworld/bin/activate
+            
             docker build -t $DOCKER_LOGIN/$IMAGE_NAME:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push $DOCKER_LOGIN/$IMAGE_NAME:$TAG
