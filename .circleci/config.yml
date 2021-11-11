@@ -38,6 +38,6 @@ jobs:
 
           docker build -t misbah012/circleci-demo-docker:$TAG .
 
-          docker login -u $DOCKER_LOGIN --password-stdin
+          docker login -u $DOCKER_LOGIN --password $DOCKER_PWD
 
           docker push misbah012/circleci-demo-docker:$TAG
