@@ -5,6 +5,8 @@ jobs:
       - image: circleci/python
         environment:
           FLASK_CONFIG: testing
+    docker:
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
       - add_ssh_keys:
